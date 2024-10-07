@@ -1,3 +1,6 @@
+-- Crear la base de datos
+CREATE DATABASE universidad;
+
 -- Rellenar tabla de estudiantes
 USE universidad;
 
