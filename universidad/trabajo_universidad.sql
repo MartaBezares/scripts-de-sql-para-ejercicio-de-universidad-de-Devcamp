@@ -1,6 +1,35 @@
 -- Crear la base de datos
 CREATE DATABASE universidad;
 
+-- Crear las tablas
+USE universidad;
+
+CREATE TABLE estudiantes(
+    estudiantes_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    estudiantes_nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE profesores(
+    profesores_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    profesores_nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE cursos (
+    cursos_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cursos_asignaturas VARCHAR(100) NOT NULL,
+    cursos_profesores_id INT NOT NULL,
+    FOREIGN KEY (cursos_profesores_id) REFERENCES profesores(profesores_id)
+);
+
+CREATE TABLE calificaciones (
+    calificaciones_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    calificaciones_nota DECIMAL NOT NULL,
+    calificaciones_cursos_id INT NOT NULL,
+    calificaciones_estudiantes_id INT NOT NULL,
+    FOREIGN KEY (calificaciones_cursos_id) REFERENCES cursos(cursos_id),
+    FOREIGN KEY (calificaciones_estudiantes_id) REFERENCES estudiantes(estudiantes_id),
+);
+
 -- Rellenar tabla de estudiantes
 USE universidad;
 
